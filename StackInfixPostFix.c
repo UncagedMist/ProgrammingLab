@@ -32,7 +32,6 @@ int isFull()
     return 1;
    }
   else
-else
    {
     return 0;
    }
@@ -51,7 +50,7 @@ int pop()
     data = stack[top];
     top = top-1;
     return data;
-}
+   }
   else
    {
     printf("underflow \n");
@@ -69,6 +68,8 @@ int push(int data)
    {
     printf("Overflow \n");
    }
+}
+
 void main()
 {
   scanf("%s",s);
@@ -118,4 +119,3 @@ void main()
    printf("%d\n",data);
   }
 }
-
