@@ -1,13 +1,16 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define size 10
+#define MAXSIZE 10
 
 void enqueue(int);
 void dequeue();
 void display();
 
-int queue[size];
+int isFull(int);
+int isEmpty(int);
+
+int queue[MAXSIZE];
 int front = 0, rear = -1;
 
 void main()
@@ -37,7 +40,8 @@ void main()
 
 void enqueue(int data)
 {
- if(front == 9)
+ int x;
+ if(isFull(x))
   {
    printf("Queue is full \n");
   }
@@ -50,7 +54,8 @@ void enqueue(int data)
 
 void dequeue()
 {
- if(front == -1)
+ int x;
+ if(isEmpty(x))
   {
    printf("Queue is empty \n");
   }
@@ -64,7 +69,32 @@ void display()
 {
  for(int i = front; i <= rear; i++)
   {
-   printf("%d",queue[i]);
+   printf("%d\n",queue[i]);
   }
-  printf("\n");
+}
+
+int isFull(int size)
+{
+ size = 9;
+ if(front == size)
+  {
+   return 1;
+  }
+ else
+  {
+   return 0;
+  }
+}
+
+int isEmpty(int size)
+{
+ size = -1;
+ if(front == size)
+  {
+   return 1;
+  }
+ else
+  {
+   return 0;
+  }
 }
