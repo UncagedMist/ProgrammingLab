@@ -9,7 +9,7 @@ struct node
 {
  int data;
  struct node *link;
-}*first = NULL,*loc = NULL,*locp = NULL,*last = NULL;
+}*first = NULL;
 
 void main()
 {
@@ -36,7 +36,7 @@ void main()
 
 void insert()
 {
- struct node *ptr;
+ struct node *ptr,*loc = NULL,*locp = NULL;
  int pos,item;
  struct node *temp;
  printf("Enter the position : \n");
@@ -74,9 +74,8 @@ void insert()
 
 void delete()
 {
- struct node *ptr;
- int pos,item;
- struct node *temp;
+ int pos;
+ struct node *temp,*loc,*locp;
  printf("Enter the position : \n");
  scanf("%d",&pos);
  if(pos == 1)
@@ -88,24 +87,24 @@ void delete()
   {
    locp = first;
    loc = first->link;
-  }
- int n;
- while(n!= pos)
-  {
-   locp = loc;
-   loc = loc->link;
-   n++;
-  }
-  temp = loc;
-  if(locp == NULL)
+   int n = 2;
+   while(n!= pos)
    {
-    first = loc->link;
+    locp = loc;
+    loc = loc->link;
+    n++;
+  }
+}
+   temp = loc;
+   if(locp == NULL)
+    { 
+     first = loc->link;
    }
   else
    {
     locp -> link = loc->link;
-    free(temp);
    }
+   free(temp); 
 }
 
 void transverse()
