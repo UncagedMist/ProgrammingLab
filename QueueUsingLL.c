@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define max 5
 
 struct node
 {
@@ -7,20 +8,22 @@ struct node
  struct node *link;
 }*front = NULL, *rear = NULL;
 
-void insert();
+void insert(int item);
 void delete();
 void display();
 
+int count  = 0;
+
 void main()
 {
- int choice;
+ int choice,item;
  while(1)
   {
    printf("1.Insert \n2.Delete \n3.Display \n4.Exit \n");
    scanf("%d",&choice);
    switch(choice)
     {
-     case 1 : insert();
+     case 1 : insert(item);
 	      break;
      case 2 : delete();
 	      break;
@@ -33,7 +36,7 @@ void main()
   }
 }
 
-void insert()
+void insert(int item)
 {
  if(count == max)
   {
@@ -43,6 +46,8 @@ void insert()
   {
    struct node *newnode;
    newnode = (struct node *)malloc(sizeof(struct node *));
+   printf("Enter a new element : \n");
+   scanf("%d",&item);
    newnode -> data = item;
    if(front == NULL)
     {
@@ -88,5 +93,11 @@ void delete()
 
 void display()
 {
- printf("display function in progress \n");
+ struct node *ptr;
+ ptr = front;
+ while(ptr != NULL)
+  {
+   printf("%d \n",ptr->data);
+   ptr = ptr -> link;
+  }
 }
