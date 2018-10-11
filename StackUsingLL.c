@@ -2,9 +2,11 @@
 #include<stdlib.h>
 #define max 5
 
-void push(int data);
+void push(int item);
 void pop();
 void display();
+
+int count = 0;
 
 struct node
 {
@@ -14,14 +16,14 @@ struct node
 
 void main()
 {
- int choice;
+ int choice,item;
  while(1)
   {
    printf("1.Push \n2.Pop \n3.Display \n4.Exit \n");
    scanf("%d",&choice);
    switch(choice)
     {
-     case 1 : push();
+     case 1 : push(item);
 	      break;
      case 2 : pop();
 	      break;
@@ -44,6 +46,8 @@ void push(int item)
   {
    struct node *newnode;
    newnode = (struct node *)malloc(sizeof(struct node *));
+   printf("Enter a new element : \n");
+   scanf("%d",&item);
    newnode -> data = item;
    if(top == NULL)
     {
@@ -54,8 +58,9 @@ void push(int item)
      newnode -> link = top;
     }
    top = newnode;
+   printf("Item Inserted \n");
+   count++;
   }
- count++;
 }
 
 void pop()
@@ -77,5 +82,11 @@ void pop()
 
 void display()
 {
- printf("Display \n");
+ struct node *ptr;
+ ptr = top;
+ while(ptr != NULL)
+  {
+   printf("%d \n",ptr -> data);
+   ptr = ptr -> link;
+  }
 }
