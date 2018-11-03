@@ -64,14 +64,16 @@ void postorder(struct node *root)
 
 void main()
 {
+ int a[10],total;
  struct node *root = NULL,*temp;
- root = insert(root,50);
- insert(root,30);
- insert(root,20);
- insert(root,40);
- insert(root,70);
- insert(root,60);
- insert(root,80);
+ printf("Enter the total no. of elements you want to enter : \n");
+ scanf("%d",&total);
+ printf("Enter the elements : \n");
+ for(int i = 0;i<total;i++)
+  {
+   scanf("%d",&a[i]);
+   root = insert(root,a[i]);
+  }
  printf("In-Order Traversal \n");
  inorder(root);
  printf("Pre-Order Traversal \n");
